@@ -1,7 +1,7 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'durationizer'
-require 'minitest/autorun'
-require 'minitest/pride'
+require 'maxitest/autorun'
+require 'active_support/core_ext/numeric/time'
 
 class DummyModel
   attr_accessor :hour_in_seconds, :two_years_in_seconds
