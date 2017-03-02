@@ -25,6 +25,10 @@ module Durationizer
         unit_value = public_send(unit_column)
         public_send(reader_name) / 1.send(unit_value)
       end
+
+      define_method "#{reader_name}_in_unit" do
+        public_send("#{reader_name}_in_units")
+      end
     end
   end
 end

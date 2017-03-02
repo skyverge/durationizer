@@ -31,5 +31,10 @@ describe Durationizer do
     it 'should return number of hours' do
       assert_equal 1, @dummy.delay_time_in_units
     end
+
+  context '#delay_time_in_unit (singular)' do
+    it 'should return number of hours' do
+      assert_equal 1, @dummy.delay_time_in_unit
+    end
   end
 end
