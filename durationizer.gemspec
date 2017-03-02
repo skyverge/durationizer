@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
                         'Justin Stern']
   spec.email         = ['help@shopstorm.com']
 
-  spec.summary       = 'TODO: Write a short summary, because Rubygems requires one.'
-  spec.description   = 'TODO: Write a longer description or delete this line.'
+  spec.summary       = 'Convert integer column to ActiveSupport::Duration'
+  spec.description   = ''
   spec.homepage      = 'https://github.com/skyverge/durationizer'
   spec.license       = 'MIT'
 
@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'activesupport', '>= 4.2'
+  spec.add_dependency 'rails', '>= 4.2'
 
   spec.add_development_dependency 'bundler', '~> 1.11'
   spec.add_development_dependency 'rake', '~> 10.0'
