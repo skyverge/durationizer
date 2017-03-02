@@ -10,14 +10,14 @@ describe Durationizer do
     refute_nil Durationizer::VERSION
   end
 
-  context '#hour' do
+  context '#delay_time' do
     it 'should return an ActiveSupport::Duration object' do
       assert_kind_of ActiveSupport::Duration, @dummy.delay_time
       assert_equal 1.hour, @dummy.delay_time
     end
   end
 
-  context '#hour=' do
+  context '#delay_time=' do
     it 'should write the correct attribute' do
       @dummy.delay_time = 30.minutes
 
