@@ -10,3 +10,10 @@ class DummyModel
 
   durationize :delay_time_in_seconds, unit: :delay_time_unit
 end
+
+class BrokenDummyModel
+  include Durationizer
+
+  attr_accessor :delay_time_in_seconds
+  durationize :delay_time_in_seconds
+end
