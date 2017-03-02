@@ -1,4 +1,4 @@
-require "durationizer/version"
+require 'durationizer/version'
 
 module Durationizer
   # Your code goes here...
