@@ -3,6 +3,7 @@ require 'test_helper'
 describe Durationizer do
   def setup
     @dummy = DummyModel.new
+    @dummy.delay_time_unit = 'hours'
     @dummy.delay_time_in_seconds = 3_600
   end
 
@@ -23,6 +24,12 @@ describe Durationizer do
 
       assert_equal 1_800, @dummy.delay_time_in_seconds
       assert_equal 30.minutes, @dummy.delay_time
+    end
+  end
+
+  context '#delay_time_in_units' do
+    it 'should return number of hours' do
+      assert_equal 1, @dummy.delay_time_in_units
     end
   end
 end
