@@ -1,6 +1,8 @@
 require 'durationizer/version'
 
 module Durationizer
+  require 'durationizer/railtie' if defined?(Rails)
+
   def self.included(klass)
     klass.extend ClassMethods
   end
