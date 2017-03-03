@@ -29,6 +29,12 @@ module Durationizer
       define_method "#{reader_name}_in_unit" do
         public_send("#{reader_name}_in_units")
       end
+
+      define_method "#{reader_name}_in_units=" do |quantity_in_units|
+        unit_type = public_send(unit_column)
+        duration = Integer(quantity_in_units).public_send(unit_type)
+        public_send(writer_name, duration)
+      end
     end
   end
 end
