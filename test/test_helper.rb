@@ -1,5 +1,6 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'durationizer'
+require 'minitest/autorun'
 require 'maxitest/autorun'
 require 'active_support/core_ext/numeric/time'
 require 'active_model'
