@@ -1,4 +1,5 @@
 require 'durationizer/version'
+require 'durationizer/constants'
 
 module Durationizer
   require 'durationizer/railtie' if defined?(Rails)
@@ -12,6 +13,7 @@ module Durationizer
       reader_name = column.to_s.sub(/_in_seconds$/, '')
       writer_name = "#{reader_name}="
       unit_column = options.fetch(:unit, "#{reader_name}_unit")
+      add_validations = options.fetch(:add_validations, true)
 
       define_method reader_name do
         public_send(column).seconds
@@ -28,6 +30,15 @@ module Durationizer
 
       define_method "#{reader_name}_in_unit" do
         public_send("#{reader_name}_in_units")
+      end
+
+      if add_validations
+        validates_inclusion_of unit_column.to_sym,
+                               in: VALID_UNIT_TYPES,
+                               message: 'has to be a valid unit, eg seconds, minutes, hours, etc'
+        validate do |model|
+          model.errors.add(:base, 'Frequency has to be a valid number') unless model.send(column).is_a?(Integer)
+        end
       end
     end
   end
