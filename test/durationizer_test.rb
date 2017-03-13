@@ -42,6 +42,24 @@ describe Durationizer do
     end
   end
 
+  context '#delay_time_in_units=' do
+    it 'should set number of hours and in_seconds value' do
+      @dummy.delay_time_in_units = 3
+
+      assert_equal 3, @dummy.delay_time_in_units
+      assert_equal 3.hours, @dummy.delay_time
+    end
+
+    it 'should raise when instance does not respond to given unit method' do
+      broken_dummy = BrokenDummyModel.new
+      broken_dummy.delay_time_in_seconds = 3600
+
+      assert_raises NoMethodError do
+        broken_dummy.delay_time_in_units = 3
+      end
+    end
+  end
+
   context '#delay_time_in_unit (singular)' do
     it 'should return number of hours' do
       assert_equal 1, @dummy.delay_time_in_unit

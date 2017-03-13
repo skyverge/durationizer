@@ -32,6 +32,12 @@ module Durationizer
         public_send("#{reader_name}_in_units")
       end
 
+      define_method "#{reader_name}_in_units=" do |quantity_in_units|
+        unit_type = public_send(unit_column)
+        duration = Integer(quantity_in_units).public_send(unit_type)
+        public_send(writer_name, duration)
+      end
+
       if add_validations
         validates_inclusion_of unit_column.to_sym,
                                in: VALID_UNIT_TYPES,
