@@ -28,5 +28,5 @@ class DummyModelWithoutValidations
 
   attr_accessor :delay_time_in_seconds, :delay_time_unit
 
-  durationize :delay_time_in_seconds, unit: :delay_time_unit, add_validations: false
+  durationize :delay_time_in_seconds, unit: :delay_time_unit, with_validations: false
 end

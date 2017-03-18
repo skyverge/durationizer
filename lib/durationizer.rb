@@ -13,7 +13,7 @@ module Durationizer
       reader_name = column.to_s.sub(/_in_seconds$/, '')
       writer_name = "#{reader_name}="
       unit_column = options.fetch(:unit, "#{reader_name}_unit")
-      add_validations = options.fetch(:add_validations, true)
+      with_validations = options.fetch(:with_validations, true)
 
       define_method reader_name do
         public_send(column).seconds
@@ -38,7 +38,7 @@ module Durationizer
         public_send(writer_name, duration)
       end
 
-      if add_validations
+      if with_validations
         validates_inclusion_of unit_column.to_sym,
                                in: VALID_UNIT_TYPES,
                                message: 'has to be a valid unit, eg seconds, minutes, hours, etc'
