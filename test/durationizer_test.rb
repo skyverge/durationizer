@@ -42,6 +42,12 @@ describe Durationizer do
     end
   end
 
+  context '#delay_time_in_unit (singular)' do
+    it 'should be an alias of #delay_time_in_units' do
+      assert_equal @dummy.method(:delay_time_in_units), @dummy.method(:delay_time_in_unit)
+    end
+  end
+
   context '#delay_time_in_units=' do
     it 'should set number of hours and in_seconds value' do
       @dummy.delay_time_in_units = 3
@@ -57,12 +63,6 @@ describe Durationizer do
       assert_raises NoMethodError do
         broken_dummy.delay_time_in_units = 3
       end
-    end
-  end
-
-  context '#delay_time_in_unit (singular)' do
-    it 'should return number of hours' do
-      assert_equal 1, @dummy.delay_time_in_unit
     end
   end
 end
