@@ -5,6 +5,7 @@ describe Durationizer do
     @dummy = DummyModel.new
     @dummy.delay_time_unit = 'hours'
     @dummy.delay_time_in_seconds = 3_600
+    @dummy.save
   end
 
   it 'has a version number' do
@@ -70,6 +71,7 @@ describe Durationizer do
     it 'should set correct in_seconds value multiplied by new unit' do
       @dummy.delay_time_unit = 'minutes'
       @dummy.delay_time_in_units = 90
+      @dummy.save
 
       assert_equal 90.minutes, @dummy.delay_time
     end
@@ -79,6 +81,7 @@ describe Durationizer do
     it 'should set correct in_seconds value multiplied by new unit' do
       @dummy.delay_time_in_units = 90
       @dummy.delay_time_unit = 'minutes'
+      @dummy.save
 
       assert_equal 90.minutes, @dummy.delay_time
     end
