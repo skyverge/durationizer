@@ -32,6 +32,11 @@ describe Durationizer do
       assert_equal 1, @dummy.delay_time_in_units
     end
 
+    it 'should return nil if unit method return blank' do
+      @dummy.delay_time_unit = nil
+      assert_nil @dummy.delay_time_in_units
+    end
+
     it 'should raise when instance does not respond to given unit method' do
       broken_dummy = BrokenDummyModel.new
       broken_dummy.delay_time_in_seconds = 3600

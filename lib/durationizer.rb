@@ -23,6 +23,7 @@ module Durationizer
 
       define_method "#{reader_name}_in_units" do
         unit_value = public_send(unit_column)
+        return if unit_value.blank?
         public_send(reader_name) / 1.public_send(unit_value)
       end
       alias_method "#{reader_name}_in_unit", "#{reader_name}_in_units"
