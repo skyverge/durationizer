@@ -33,6 +33,7 @@ module Durationizer
         duration = Integer(quantity_in_units).public_send(unit_type)
         public_send(writer_name, duration)
       end
+      alias_method "#{reader_name}_in_unit=", "#{reader_name}_in_units="
     end
   end
 end
