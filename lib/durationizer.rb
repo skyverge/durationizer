@@ -32,8 +32,8 @@ module Durationizer
       alias_method "#{reader_name}_in_unit", "#{reader_name}_in_units"
 
       define_method "#{reader_name}_in_units=" do |quantity_in_units|
-        unit_type = public_send(unit_column)
-        duration = Integer(quantity_in_units).public_send(unit_type)
+        unit_value = public_send(unit_column)
+        duration = quantity_in_units.present? ? Integer(quantity_in_units).public_send(unit_value) : nil
         public_send(writer_name, duration)
       end
       alias_method "#{reader_name}_in_unit=", "#{reader_name}_in_units="

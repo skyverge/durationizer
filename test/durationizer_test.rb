@@ -71,6 +71,21 @@ describe Durationizer do
       assert_equal 3.hours, @dummy.delay_time
     end
 
+    it 'should set nils if the given in_units is nil' do
+      @dummy.delay_time_in_units = nil
+
+      assert_nil @dummy.delay_time_in_units
+      assert_nil @dummy.delay_time
+    end
+
+    it 'should set nils if the given in_units is empty string' do
+      # We care about a empty string value since it'd be what we get from a form.
+      @dummy.delay_time_in_units = ''
+
+      assert_nil @dummy.delay_time_in_units
+      assert_nil @dummy.delay_time
+    end
+
     it 'should raise when instance does not respond to given unit method' do
       broken_dummy = BrokenDummyModel.new
       broken_dummy.delay_time_in_seconds = 3600
