@@ -14,7 +14,9 @@ module Durationizer
       unit_column = options.fetch(:unit, "#{reader_name}_unit")
 
       define_method reader_name do
-        public_send(column).seconds
+        column_value = public_send(column)
+        return if column_value.blank?
+        column_value.seconds
       end
 
       define_method writer_name do |duration|
@@ -23,7 +25,8 @@ module Durationizer
 
       define_method "#{reader_name}_in_units" do
         unit_value = public_send(unit_column)
-        return if unit_value.blank?
+        reader_value = public_send(reader_name)
+        return if unit_value.blank? || reader_value.blank?
         public_send(reader_name) / 1.public_send(unit_value)
       end
       alias_method "#{reader_name}_in_unit", "#{reader_name}_in_units"

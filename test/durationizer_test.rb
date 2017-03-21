@@ -16,6 +16,11 @@ describe Durationizer do
       assert_kind_of ActiveSupport::Duration, @dummy.delay_time
       assert_equal 1.hour, @dummy.delay_time
     end
+
+    it 'should return nil if in_seconds is blank' do
+      @dummy.delay_time_in_seconds = nil
+      assert_nil @dummy.delay_time
+    end
   end
 
   context '#delay_time=' do
@@ -34,6 +39,11 @@ describe Durationizer do
 
     it 'should return nil if unit method return blank' do
       @dummy.delay_time_unit = nil
+      assert_nil @dummy.delay_time_in_units
+    end
+
+    it 'should return nil if in_seconds is blank' do
+      @dummy.delay_time_in_seconds = nil
       assert_nil @dummy.delay_time_in_units
     end
 
