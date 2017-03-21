@@ -79,7 +79,7 @@ describe Durationizer do
     end
 
     it 'should set nils if the given in_units is empty string' do
-      # We care about a empty string value since it'd be what we get from a form.
+      # We care about empty strings values since that's what we'd get from a form.
       @dummy.delay_time_in_units = ''
 
       assert_nil @dummy.delay_time_in_units
