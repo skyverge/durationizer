@@ -41,9 +41,9 @@ module Durationizer
       if with_validations
         validates_inclusion_of unit_column.to_sym,
                                in: VALID_UNIT_TYPES,
-                               message: 'has to be a valid unit, eg seconds, minutes, hours, etc'
-        validate do |model|
-          model.errors.add(:base, 'Frequency has to be a valid number') unless model.send(column).is_a?(Numeric)
+                               message: I18n.t('durationizer.validations.invalid_type')
+        validate do
+          errors.add(reader_name, I18n.t('durationizer.validations.invalid_number')) unless send(column).is_a?(Numeric)
         end
       end
     end

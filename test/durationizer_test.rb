@@ -71,7 +71,7 @@ describe Durationizer do
       it 'should validate the durationized fields' do
         dummy = DummyModel.new
         refute dummy.valid?
-        assert_includes dummy.errors[:base], 'Frequency has to be a valid number'
+        assert_includes dummy.errors[:delay_time], 'has to be a valid number'
         assert_includes dummy.errors[:delay_time_unit], 'has to be a valid unit, eg seconds, minutes, hours, etc'
       end
     end
