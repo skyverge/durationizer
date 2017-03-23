@@ -5,6 +5,8 @@ require 'maxitest/autorun'
 require 'active_support/core_ext/numeric/time'
 require 'active_model'
 
+I18n.load_path << File.expand_path(File.dirname(__FILE__) + '/../config/locales/en.yml')
+
 class DummyModel
   include Durationizer
   include ActiveModel::Validations
