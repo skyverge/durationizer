@@ -1,0 +1,5 @@
+en:
+  durationizer:
+    validations:
+      invalid_type: has to be a valid unit, eg seconds, minutes, hours, etc
+      invalid_number: has to be a valid number
